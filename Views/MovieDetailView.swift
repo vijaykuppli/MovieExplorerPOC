@@ -6,25 +6,38 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct MovieDetailView: View {
 
     let movie: Movie
-
+    @State private var showVideoPlayer = false
+    
     var body: some View {
 
         ScrollView {
 
             VStack(alignment: .leading, spacing: 16) {
 
-                AsyncImage(url: URL(string: movie.imageUrl)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(height: 420)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                } placeholder: {
-                    ProgressView()
+                ZStack {
+
+                    AsyncImage(url: URL(string: movie.imageUrl)) { image in
+                        image
+                            .resizable()
+                            .frame(height: 320)
+                    } placeholder: {
+                        ProgressView()
+                    }
+
+                    Button {
+                        showVideoPlayer = true
+                    } label: {
+
+                        Image(systemName: "play.circle.fill")
+                            .font(.system(size: 70))
+                            .foregroundStyle(.white)
+                            .shadow(radius: 10)
+                    }
                 }
 
                 Text(movie.title)
@@ -49,5 +62,10 @@ struct MovieDetailView: View {
         }
         .navigationTitle(movie.title)
         .navigationBarTitleDisplayMode(.inline)
+        .fullScreenCover(isPresented: $showVideoPlayer) {
+            VideoPlayerScreen(
+                videoUrl: "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8"
+            )
+        }
     }
 }

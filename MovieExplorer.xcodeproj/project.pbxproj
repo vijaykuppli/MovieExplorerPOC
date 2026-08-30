@@ -20,6 +20,7 @@
 		489BBF2B30432D2100F4828F /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BBF2A30432D2100F4828F /* RegisterViewModel.swift */; };
 		489BBF2F30432D4400F4828F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BBF2E30432D4400F4828F /* LoginViewModel.swift */; };
 		489BBF3C3043F57600F4828F /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BBF3B3043F57200F4828F /* MovieDetailView.swift */; };
+		489BBF3E3043F9BC00F4828F /* VideoPlayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BBF3D3043F9AF00F4828F /* VideoPlayerScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		489BBF2A30432D2100F4828F /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		489BBF2E30432D4400F4828F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		489BBF3B3043F57200F4828F /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		489BBF3D3043F9AF00F4828F /* VideoPlayerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -90,6 +92,7 @@
 		489BBF0430430C2A00F4828F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				489BBF3D3043F9AF00F4828F /* VideoPlayerScreen.swift */,
 				489BBF3B3043F57200F4828F /* MovieDetailView.swift */,
 				489BBF1E30432C6100F4828F /* UserViews */,
 				489BBF0A30430E1500F4828F /* MovieRowView.swift */,
@@ -239,6 +242,7 @@
 				489BBF1530431AAA00F4828F /* MovieViewModel.swift in Sources */,
 				489BBF2430432C8400F4828F /* HomeView.swift in Sources */,
 				489BBF2230432C7D00F4828F /* RegisterView.swift in Sources */,
+				489BBF3E3043F9BC00F4828F /* VideoPlayerScreen.swift in Sources */,
 				489BBF1630431AAA00F4828F /* MovieRowView.swift in Sources */,
 				489BBF2930432D0800F4828F /* UserStorageService.swift in Sources */,
 				489BBF12304318BB00F4828F /* MovieListView.swift in Sources */,
