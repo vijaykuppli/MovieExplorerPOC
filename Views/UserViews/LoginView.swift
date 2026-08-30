@@ -10,7 +10,9 @@ import SwiftUI
 struct LoginView: View {
 
     @StateObject private var viewModel = LoginViewModel()
-
+    @AppStorage("isLoggedIn")
+    private var isLoggedIn = false
+    
     var body: some View {
 
         NavigationStack {
@@ -31,6 +33,9 @@ struct LoginView: View {
 
                 Button("Login") {
                     viewModel.login()
+                    if viewModel.isLoggedIn {
+                           isLoggedIn = true
+                       }
                 }
 
                 Text(viewModel.errorMessage)
@@ -45,7 +50,7 @@ struct LoginView: View {
             .navigationDestination(
                 isPresented: $viewModel.isLoggedIn
             ) {
-                MovieListView()
+                HomeView()
             }
         }
     }

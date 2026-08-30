@@ -23,9 +23,22 @@ class MovieViewModel: ObservableObject {
     
     func loadMovies() async {
         do{
+            guard movies.isEmpty else { return }
             movies = try await service.fetchMovies()
         }catch{
             print(error)
         }
     }
+    func toggleFavorite(movie: Movie) {
+
+           guard let index = movies.firstIndex(where: {
+               $0.id == movie.id
+           }) else { return }
+
+           movies[index].isFavorite.toggle()
+       }
+
+       var favoriteMovies: [Movie] {
+           movies.filter { $0.isFavorite }
+       }
 }

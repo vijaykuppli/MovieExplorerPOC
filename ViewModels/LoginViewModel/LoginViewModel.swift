@@ -15,7 +15,7 @@ class LoginViewModel: ObservableObject {
 
     @Published var isLoggedIn = false
     @Published var errorMessage = ""
-
+    
     private let storage = UserStorageService()
 
     func login() {

@@ -10,7 +10,7 @@ import SwiftUI
 struct MovieExplorerApp: App {
     var body: some Scene {
         WindowGroup {
-            MovieListView()
+            LoginView()
         }
     }
 }

@@ -9,11 +9,17 @@ import SwiftUI
 
 @main
 struct OfflineAuthApp: App {
-
+    @AppStorage("isLoggedIn")
+    private var isLoggedIn = false
+    
     var body: some Scene {
 
         WindowGroup {
-            MovieListView()
+            if isLoggedIn{
+                            HomeView()
+                        } else {
+                            LoginView()
+                        }
         }
     }
 }

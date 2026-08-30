@@ -13,5 +13,6 @@ struct Movie: Identifiable {
     let imageName: String
     let backgroundColor: Color
     let imageUrl: String
+    var isFavorite: Bool = false
 }
 

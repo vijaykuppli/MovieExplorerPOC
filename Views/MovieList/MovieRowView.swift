@@ -10,7 +10,8 @@ import SwiftUI
 struct MovieRowView: View {
 
     let movie: Movie
-
+    let onFavoriteTap: () -> Void
+    
     var body: some View {
 
         HStack(spacing: 16) {
@@ -40,7 +41,6 @@ struct MovieRowView: View {
                     EmptyView()
                 }
             }
-        
             VStack(alignment: .leading, spacing: 8) {
 
                 Text(movie.title)
@@ -56,7 +56,18 @@ struct MovieRowView: View {
                     .foregroundStyle(.orange)
             }
 
-            Spacer()
+            Spacer()
+            Button {
+                onFavoriteTap()
+            } label: {
+                Image(
+                    systemName: movie.isFavorite
+                        ? "heart.fill"
+                        : "heart"
+                )
+                .foregroundStyle(.red)
+            }
+            .buttonStyle(.borderless)
         }
         .padding()
         .background(movie.backgroundColor.opacity(0.15))

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MovieListView: View {
-    @StateObject private var viewModel = MovieViewModel()
-
+    @EnvironmentObject var viewModel: MovieViewModel
+    
         var body: some View {
 
             NavigationStack {
@@ -19,7 +19,12 @@ struct MovieListView: View {
                     NavigationLink {
                         MovieDetailView(movie: movie)
                     } label: {
-                        MovieRowView(movie: movie)
+                        MovieRowView(
+                                    movie: movie,
+                                    onFavoriteTap: {
+                                        viewModel.toggleFavorite(movie: movie)
+                                    }
+                                )
                     }
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
