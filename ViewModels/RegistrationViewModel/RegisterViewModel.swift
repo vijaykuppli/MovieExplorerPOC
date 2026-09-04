@@ -22,6 +22,6 @@ class RegisterViewModel: ObservableObject {
             password: password
         )
 
-        storage.saveUser(user)
+        UserStorageService().saveUser(user)
     }
 }

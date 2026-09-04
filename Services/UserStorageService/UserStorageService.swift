@@ -7,22 +7,44 @@
 
 import Foundation
 
-class UserStorageService {
+final class UserStorageService {
 
-    private let userKey = "saved_user"
+    private let usernameKey = "saved_username"
 
     func saveUser(_ user: User) {
 
-        if let data = try? JSONEncoder().encode(user) {
-            UserDefaults.standard.set(data, forKey: userKey)
-        }
+        UserDefaults.standard.set(
+            user.username,
+            forKey: usernameKey
+        )
+
+        KeychainService.shared.savePassword(
+            username: user.username,
+            password: user.password
+        )
     }
 
     func getUser() -> User? {
 
-        guard let data = UserDefaults.standard.data(forKey: userKey)
-        else { return nil }
+        guard let username =
+            UserDefaults.standard.string(
+                forKey: usernameKey
+            )
+        else {
+            return nil
+        }
 
-        return try? JSONDecoder().decode(User.self, from: data)
+        guard let password =
+            KeychainService.shared.getPassword(
+                username: username
+            )
+        else {
+            return nil
+        }
+
+        return User(
+            username: username,
+            password: password
+        )
     }
 }

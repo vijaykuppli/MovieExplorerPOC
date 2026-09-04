@@ -20,19 +20,23 @@ class LoginViewModel: ObservableObject {
 
     func login() {
 
-        guard let user = storage.getUser() else {
-            errorMessage = "User not found"
-            return
-        }
+        guard let savedUser =
+                UserStorageService().getUser()
+            else {
 
-        if user.username == username &&
-            user.password == password {
+                errorMessage = "User not found"
+                return
+            }
 
-            isLoggedIn = true
+            if savedUser.username == username &&
+                savedUser.password == password {
 
-        } else {
+                isLoggedIn = true
+                errorMessage = ""
 
-            errorMessage = "Invalid credentials"
+            } else {
+
+                errorMessage = "Invalid credentials"
         }
     }
 }

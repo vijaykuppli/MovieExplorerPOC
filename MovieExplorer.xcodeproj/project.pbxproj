@@ -24,6 +24,7 @@
 		489BBF463043FF5400F4828F /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BBF453043FF5000F4828F /* FavoritesView.swift */; };
 		489BBF4B3043FF7700F4828F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BBF4A3043FF7500F4828F /* ProfileView.swift */; };
 		489BBF4D304405BC00F4828F /* ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BBF4C304405BB00F4828F /* ProfileRow.swift */; };
+		489BBF50304ADE9400F4828F /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489BBF4F304ADCDF00F4828F /* KeychainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		489BBF453043FF5000F4828F /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		489BBF4A3043FF7500F4828F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		489BBF4C304405BB00F4828F /* ProfileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRow.swift; sourceTree = "<group>"; };
+		489BBF4F304ADCDF00F4828F /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -69,6 +71,7 @@
 		489BBEEC3042987700F4828F = {
 			isa = PBXGroup;
 			children = (
+				489BBF4E304ADCD900F4828F /* Utils */,
 				489BBF0630430C3500F4828F /* Services */,
 				489BBF0530430C2F00F4828F /* ViewModels */,
 				489BBF0430430C2A00F4828F /* Views */,
@@ -211,6 +214,14 @@
 			path = MovieService;
 			sourceTree = "<group>";
 		};
+		489BBF4E304ADCD900F4828F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				489BBF4F304ADCDF00F4828F /* KeychainService.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,6 +307,7 @@
 				489BBF3E3043F9BC00F4828F /* VideoPlayerScreen.swift in Sources */,
 				489BBF4B3043FF7700F4828F /* ProfileView.swift in Sources */,
 				489BBF1630431AAA00F4828F /* MovieRowView.swift in Sources */,
+				489BBF50304ADE9400F4828F /* KeychainService.swift in Sources */,
 				489BBF2930432D0800F4828F /* UserStorageService.swift in Sources */,
 				489BBF12304318BB00F4828F /* MovieListView.swift in Sources */,
 				489BBF2030432C7000F4828F /* LoginView.swift in Sources */,
