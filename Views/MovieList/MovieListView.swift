@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MovieListView: View {
-    @EnvironmentObject var viewModel: MovieViewModel
+    @Environment(MovieViewModel.self)
+    private var viewModel
     
         var body: some View {
 
@@ -30,7 +31,7 @@ struct MovieListView: View {
                     .listRowBackground(Color.clear)
                 }
                 .listStyle(.plain)
-                .navigationTitle("Movies")
+                .navigationTitle("movies_title")
                 .task {
                     await viewModel.loadMovies()
                 }

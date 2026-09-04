@@ -5,11 +5,11 @@
 //  Created by Vijay Santosh Kumar Kupli on 29/08/26.
 //
 import Foundation
-import Combine
 
 @MainActor
-class MovieViewModel: ObservableObject {
-    @Published var movies: [Movie] = []
+@Observable
+final class MovieViewModel {
+    var movies: [Movie] = []
     
     private let service: MovieService
 

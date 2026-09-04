@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct FavoritesView: View {
-    @EnvironmentObject var viewModel: MovieViewModel
-
+    @Environment(MovieViewModel.self)
+    private var viewModel
+    
     var body: some View {
         NavigationStack {
 
@@ -17,7 +18,7 @@ struct FavoritesView: View {
 
                             if viewModel.favoriteMovies.isEmpty {
 
-                                VStack(spacing: 16) {
+                                VStack(spacing: AppConstants.Spacing.medium) {
 
                                     Image(systemName: "heart.slash")
                                         .font(.system(size: 60))
@@ -50,7 +51,7 @@ struct FavoritesView: View {
                                 .listStyle(.plain)
                             }
                         }
-                        .navigationTitle("Favorites")
+                        .navigationTitle("favorites_title")
                     }
     }
 }

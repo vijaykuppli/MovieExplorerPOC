@@ -24,7 +24,7 @@ struct MovieDetailView: View {
                     AsyncImage(url: URL(string: movie.imageUrl)) { image in
                         image
                             .resizable()
-                            .frame(height: 320)
+                            .frame(height: AppConstants.ImageSize.imageHeight)
                     } placeholder: {
                         ProgressView()
                     }
@@ -36,7 +36,7 @@ struct MovieDetailView: View {
                         Image(systemName: "play.circle.fill")
                             .font(.system(size: 70))
                             .foregroundStyle(.white)
-                            .shadow(radius: 10)
+                            .shadow(radius: AppConstants.CornerRadius.normal)
                     }
                 }
 

@@ -9,44 +9,53 @@ import SwiftUI
 
 struct LoginView: View {
 
-    @StateObject private var viewModel = LoginViewModel()
+    @State private var viewModel = LoginViewModel()
+
     @AppStorage("isLoggedIn")
     private var isLoggedIn = false
-    
+
     var body: some View {
 
         NavigationStack {
 
-            VStack(spacing: 20) {
+            VStack(spacing: AppConstants.Spacing.large) {
+
+                @Bindable var viewModel = viewModel
 
                 TextField(
-                    "Username",
+                    "username_placeholder",
                     text: $viewModel.username
                 )
                 .textFieldStyle(.roundedBorder)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
 
                 SecureField(
-                    "Password",
+                    "password_placeholder",
                     text: $viewModel.password
                 )
                 .textFieldStyle(.roundedBorder)
 
-                Button("Login") {
+                Button("login_title") {
                     viewModel.login()
+
                     if viewModel.isLoggedIn {
-                           isLoggedIn = true
-                       }
+                        isLoggedIn = true
+                    }
                 }
 
-                Text(viewModel.errorMessage)
-                    .foregroundStyle(.red)
+                if !viewModel.errorMessage.isEmpty {
+                    Text(LocalizedStringKey(viewModel.errorMessage))
+                        .foregroundStyle(.red)
+                }
 
                 NavigationLink(
-                    "Register",
+                    "register_title",
                     destination: RegisterView()
                 )
             }
             .padding()
+            .navigationTitle("login_title")
             .navigationDestination(
                 isPresented: $viewModel.isLoggedIn
             ) {

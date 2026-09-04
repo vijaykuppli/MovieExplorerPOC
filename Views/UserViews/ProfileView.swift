@@ -24,7 +24,7 @@ struct ProfileView: View {
 
                     Image("profile_pic")
                         .resizable()
-                        .frame(width: 190, height: 190)
+                        .frame(width: AppConstants.ImageSize.imageWidth, height: AppConstants.ImageSize.imageWidth)
                         .clipShape(Circle())
                         .foregroundStyle(.blue)
 
@@ -36,10 +36,10 @@ struct ProfileView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
-                .padding(.top, 30)
+                .padding(.top, AppConstants.Padding.paddingNormal)
 
                 // Menu Section
-                VStack(spacing: 12) {
+                VStack(spacing: AppConstants.Spacing.medium) {
 
                     ProfileRow(
                         icon: "pencil",
@@ -75,12 +75,12 @@ struct ProfileView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Profile")
+            .navigationTitle("profile_title")
             .alert("Logout", isPresented: $showLogoutAlert) {
 
-                Button("Cancel", role: .cancel) { }
+                Button("cancel", role: .cancel) { }
 
-                Button("OK", role: .destructive) {
+                Button("okay", role: .destructive) {
                     logout()
                 }
 

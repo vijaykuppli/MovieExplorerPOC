@@ -9,31 +9,29 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var selectedTab = 0
-    @StateObject private var movieViewModel = MovieViewModel()
+    @State private var movieViewModel = MovieViewModel()
     
     var body: some View {
 
         TabView {
 
             MovieListView()
-                .environmentObject(movieViewModel)
                 .tabItem {
                     Image(systemName: "film")
-                    Text("Movies")
+                    Text("movies_title")
                 }
 
             FavoritesView()
-                .environmentObject(movieViewModel)
                 .tabItem {
                     Image(systemName: "heart")
-                    Text("Favorites")
+                    Text("favorites_title")
                 }
 
             ProfileView()
                 .tabItem {
                     Image(systemName: "person")
-                    Text("Profile")
+                    Text("profile_title")
                 }
-        }
+        }.environment(movieViewModel)
     }
 }

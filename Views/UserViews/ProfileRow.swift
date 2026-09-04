@@ -23,6 +23,6 @@ struct ProfileRow: View {
         }
         .padding()
         .background(Color.gray.opacity(0.1))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .clipShape(RoundedRectangle(cornerRadius: AppConstants.CornerRadius.medium))
     }
 }

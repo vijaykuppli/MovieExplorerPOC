@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class UserStorageService {
+final class UserStorageService : UserStorageProtocol{
 
     private let usernameKey = "saved_username"
 

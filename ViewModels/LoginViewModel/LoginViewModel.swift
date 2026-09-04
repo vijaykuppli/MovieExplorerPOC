@@ -6,37 +6,56 @@
 //
 
 import Foundation
-import Combine
+import Observation
 
-class LoginViewModel: ObservableObject {
+@Observable
+final class LoginViewModel {
 
-    @Published var username = ""
-    @Published var password = ""
+    var username = ""
+    var password = ""
+    var isLoggedIn = false
+    var errorMessage = ""
 
-    @Published var isLoggedIn = false
-    @Published var errorMessage = ""
-    
-    private let storage = UserStorageService()
+    private let storage: UserStorageProtocol
+
+    init(storage: UserStorageProtocol) {
+        self.storage = storage
+    }
+
+    convenience init() {
+        self.init(storage: UserStorageService())
+    }
 
     func login() {
 
-        guard let savedUser =
-                UserStorageService().getUser()
-            else {
+        // Validate input
+        guard !username.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            errorMessage = "username_required"
+            isLoggedIn = false
+            return
+        }
 
-                errorMessage = "User not found"
-                return
-            }
+        guard !password.isEmpty else {
+            errorMessage = "password_required"
+            isLoggedIn = false
+            return
+        }
 
-            if savedUser.username == username &&
-                savedUser.password == password {
+        guard let savedUser = storage.getUser() else {
+            errorMessage = "User Not Found"
+            isLoggedIn = false
+            return
+        }
 
-                isLoggedIn = true
-                errorMessage = ""
+        if savedUser.username == username &&
+            savedUser.password == password {
 
-            } else {
+            isLoggedIn = true
+            errorMessage = ""
 
-                errorMessage = "Invalid credentials"
+        } else {
+            isLoggedIn = false
+            errorMessage = "Invalid Credentials"
         }
     }
 }

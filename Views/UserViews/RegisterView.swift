@@ -8,28 +8,44 @@ import SwiftUI
 
 struct RegisterView: View {
 
-    @StateObject private var viewModel = RegisterViewModel()
+    @State private var viewModel = RegisterViewModel()
+
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
 
-        VStack(spacing: 20) {
+        VStack(spacing: AppConstants.Spacing.large) {
+
+            @Bindable var viewModel = viewModel
 
             TextField(
-                "Username",
+                "username_placeholder",
                 text: $viewModel.username
             )
             .textFieldStyle(.roundedBorder)
+            .textInputAutocapitalization(.never)
+            .autocorrectionDisabled()
 
             SecureField(
-                "Password",
+                "password_placeholder",
                 text: $viewModel.password
             )
             .textFieldStyle(.roundedBorder)
 
-            Button("Register") {
+            Button("register_title") {
                 viewModel.register()
+
+                if viewModel.registrationSuccessful {
+                    dismiss()
+                }
+            }
+
+            if !viewModel.errorMessage.isEmpty {
+                Text(LocalizedStringKey(viewModel.errorMessage))
+                    .foregroundStyle(.red)
             }
         }
         .padding()
+        .navigationTitle("register_title")
     }
 }

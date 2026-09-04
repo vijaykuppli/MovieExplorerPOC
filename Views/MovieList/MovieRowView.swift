@@ -14,7 +14,7 @@ struct MovieRowView: View {
     
     var body: some View {
 
-        HStack(spacing: 16) {
+        HStack(spacing: AppConstants.Spacing.extraLarge) {
 
             AsyncImage(url: URL(string: movie.imageUrl)) { phase in
 
@@ -22,26 +22,26 @@ struct MovieRowView: View {
 
                 case .empty:
                     ProgressView()
-                        .frame(width: 80, height: 120)
+                        .frame(width: AppConstants.ViewDimensions.width, height: AppConstants.ViewDimensions.height)
 
                 case .success(let image):
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 120, height: 120)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .frame(width: AppConstants.ViewDimensions.height, height: AppConstants.ViewDimensions.height)
+                        .clipShape(RoundedRectangle(cornerRadius: AppConstants.CornerRadius.medium))
 
                 case .failure:
                     Image(systemName: "photo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 80, height: 120)
+                        .frame(width: AppConstants.ViewDimensions.width, height: AppConstants.ViewDimensions.height)
 
                 @unknown default:
                     EmptyView()
                 }
             }
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: AppConstants.Spacing.small) {
 
                 Text(movie.title)
                     .font(.title3)
@@ -70,7 +70,47 @@ struct MovieRowView: View {
             .buttonStyle(.borderless)
         }
         .padding()
-        .background(movie.backgroundColor.opacity(0.15))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .background(backgroundColor.opacity(0.15))
+        .clipShape(RoundedRectangle(cornerRadius: AppConstants.CornerRadius.medium))
     }
+    private var backgroundColor: Color {
+            switch movie.backgroundColor {
+            case "red":
+                return .red
+            case "blue":
+                return .blue
+            case "green":
+                return .green
+            case "orange":
+                return .orange
+            case "purple":
+                return .purple
+            case "yellow":
+                return .yellow
+            case "cyan":
+                return .cyan
+            case "black":
+                return .black
+            case "brown":
+                return .brown
+            case "gray":
+                return .gray
+            case "indigo":
+                return .indigo
+            case "mint":
+                return .mint
+            case "pink":
+                return .pink
+            case "teal":
+                return .teal
+            case "white":
+                return .white
+            case "primary":
+                return .primary
+            case "secondary":
+                return .secondary
+            default:
+                return .clear
+            }
+        }
 }
